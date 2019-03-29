@@ -12,7 +12,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val mRepository : AppRepository
 
     init {
-        mRepository = AppRepository.newInstance(application.applicationContext)
+        mRepository = AppRepository.getInstance(application.applicationContext)
         mNotes = mRepository.mNotes
     }
 

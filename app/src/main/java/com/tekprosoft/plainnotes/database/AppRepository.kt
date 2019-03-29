@@ -36,7 +36,7 @@ class AppRepository {
         private lateinit var sInstance : AppRepository
 
         @JvmStatic
-        fun newInstance(context: Context) : AppRepository{
+        fun getInstance(context: Context) : AppRepository{
             if (!::sInstance.isInitialized){
                 sInstance = AppRepository(context)
             }
