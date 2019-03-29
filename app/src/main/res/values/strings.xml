@@ -93,4 +93,6 @@
     </string>
     <string name="hint_note_text">Enter a Note</string>
     <string name="action_delete_all">Delete All</string>
+    <string name="title_new_note">New Note</string>
+    <string name="title_edit_note">Edit Note</string>
 </resources>

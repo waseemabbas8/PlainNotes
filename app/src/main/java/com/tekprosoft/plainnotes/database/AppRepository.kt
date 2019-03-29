@@ -32,6 +32,16 @@ class AppRepository {
         }
     }
 
+    fun getNoteById(noteId: Int): NoteEntity {
+        return mDb.noteDao().getNoteById(noteId)
+    }
+
+    fun insertNote(note : NoteEntity) {
+        executor.execute {
+            mDb.noteDao().addUpdateNote(note)
+        }
+    }
+
     companion object {
         private lateinit var sInstance : AppRepository
 
