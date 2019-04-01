@@ -42,6 +42,14 @@ class AppRepository {
         }
     }
 
+    fun deleteNote(noteEntity: NoteEntity?) {
+        executor.execute {
+            if (noteEntity != null) {
+                mDb.noteDao().deleteNote(noteEntity)
+            }
+        }
+    }
+
     companion object {
         private lateinit var sInstance : AppRepository
 

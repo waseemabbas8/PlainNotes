@@ -1,6 +1,7 @@
 package com.tekprosoft.plainnotes
 
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +12,7 @@ import com.tekprosoft.plainnotes.utilities.AppConstants.Companion.NOTE_ID_KEY
 import com.tekprosoft.plainnotes.utilities.MyViewBinder.Companion.bind
 import com.tekprosoft.plainnotes.viewmodels.EditorViewModel
 import kotlinx.android.synthetic.main.activity_editor.*
+import java.util.zip.Inflater
 
 class EditorActivity : AppCompatActivity() {
 
@@ -50,17 +52,34 @@ class EditorActivity : AppCompatActivity() {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        if (!newNote){
+            menuInflater.inflate(R.menu.menu_editor, menu)
+        }
+        return super.onCreateOptionsMenu(menu)
+    }
+
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         return when(item?.itemId){
+
             android.R.id.home -> {
                 saveAndReturn()
+                true
+            }
+            R.id.action_delete ->{
+                deleteAndReturn()
                 true
             }else -> {
                 false
             }
+
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun deleteAndReturn() {
+        mViewModel.deleteNote()
     }
 
     override fun onBackPressed() {

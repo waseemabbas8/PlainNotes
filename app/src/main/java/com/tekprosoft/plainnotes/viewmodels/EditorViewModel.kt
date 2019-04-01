@@ -36,4 +36,8 @@ class EditorViewModel(application: Application) : AndroidViewModel(application) 
         note?.let { mRepository.insertNote(it) }
     }
 
+    fun deleteNote() {
+        mRepository.deleteNote(mLiveNote.value)
+    }
+
 }
